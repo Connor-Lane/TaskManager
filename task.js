@@ -12,6 +12,8 @@ let text = ``;
 let extra;
 // Variable for removing a task
 let remove;
+// Variable for changing the name of a task
+let change;
 
 
 // Beginning code
@@ -23,7 +25,8 @@ while (runManager) {
 What would you like to do (Please enter one of the options below):
 "TASKS" - Displays All Tasks
 "NEW" - Add A New Task
-"REMOVE" - Remove a Task
+"REMOVE" - Remove A Task
+"CHANGE" - Change The Name Of A Task
 "CLOSE" - Close The Task Manager`);
 
     if (option.toUpperCase() === `TASKS`) {
@@ -70,6 +73,26 @@ What would you like to do (Please enter one of the options below):
         remove = remove - 1;
         alert(`"${tasks[remove]}" has been removed`);
         tasks.splice(remove, 1);
+
+        // Allows for a user to change the name of a specific task
+    } else if (option.toUpperCase() === `CHANGE`) {
+        text = `Please enter the number of the task you would like to change:\n`;
+        for (i = 1; i <= tasks.length; i++) {
+            text = text + `${i}: ${tasks[i - 1]}\n`;
+        }
+
+        while (true) {
+            change = parseInt(prompt(text));
+            if (change < 1 || change > tasks.length) {
+                alert("Not a valid entry"); 
+            } else {
+                break;
+            }
+        }
+
+        change -= 1;
+        text = prompt("What would you like to change that task to?");
+        tasks.splice(change, 1, text);
 
         // Gives message to user then cuts off the loops ability to actually loop
     } else if (option.toUpperCase() === `CLOSE`) {
