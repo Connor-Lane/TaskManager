@@ -27,6 +27,7 @@ What would you like to do (Please enter one of the options below):
 "CLOSE" - Close The Task Manager`);
 
     if (option.toUpperCase() === `TASKS`) {
+
         // First is to empty any text out of the text variable then adding in each task on separate lines
         text = ``;
         for (i = 0; i < tasks.length; i++) {
@@ -37,13 +38,17 @@ What would you like to do (Please enter one of the options below):
             }
         }
         alert(text);
+
         // Getting a new task then adds it on to the end of the list of tasks
     } else if (option.toUpperCase() === `NEW`) {
+
         extra = prompt(`Please enter the new task:`);
         tasks.push(extra)
         alert(`\"${extra}\" has been added!`);
-        // 
+
+        // Displays all of the tasks and sets their number in the order of the list. Then gets the number they wish to remove and removes it.
     } else if (option.toUpperCase() === `REMOVE`) {
+
         text = `Please enter a number to remove:\n`;
         for (i = 1; i <= tasks.length; i++) {
             text = text + `${i}: ${tasks[i - 1]}\n`;
@@ -51,6 +56,7 @@ What would you like to do (Please enter one of the options below):
         remove = parseInt(prompt(text)) - 1;
         alert(`"${tasks[remove]}" has been removed`);
         tasks.splice(remove, 1);
+
         // Gives message to user then cuts off the loops ability to actually loop
     } else if (option.toUpperCase() === `CLOSE`) {
         alert(`Thank you for using Task Manager!`);
