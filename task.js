@@ -8,6 +8,8 @@ let option;
 let tasks = [`Eat chicken`, `Master JavaScript`];
 // This is a variable for any text that I might need to input in a non conventional way
 let text = ``;
+// Variable for adding a task
+let extra;
 
 
 // Beginning code
@@ -33,7 +35,9 @@ What would you like to do (Please enter one of the options below):
         }
         alert(text);
     } else if (option.toUpperCase() === `NEW`) {
-
+        extra = prompt(`Please enter the new task:`);
+        tasks.push(extra)
+        alert(`\"${extra}\" has been added!`);
     } else if (option.toUpperCase() === `REMOVE`) {
 
     } else if (option.toUpperCase() === `CLOSE`) {
