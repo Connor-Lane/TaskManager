@@ -43,6 +43,10 @@ What would you like to do (Please enter one of the options below):
     } else if (option.toUpperCase() === `NEW`) {
 
         extra = prompt(`Please enter the new task:`);
+        // This loop ensures that something will be input for a new task
+        while (extra === ``) {
+            extra = prompt(`Please enter the new task:`);
+        }
         tasks.push(extra)
         alert(`\"${extra}\" has been added!`);
 
@@ -53,7 +57,17 @@ What would you like to do (Please enter one of the options below):
         for (i = 1; i <= tasks.length; i++) {
             text = text + `${i}: ${tasks[i - 1]}\n`;
         }
-        remove = parseInt(prompt(text)) - 1;
+        // This while loop ensures that a valid entry is input
+        while (true) {
+            remove = parseInt(prompt(text));
+            if (remove < 1 || remove > tasks.length) {
+                alert("Not a valid entry"); 
+            } else {
+                break;
+            }
+        }        
+
+        remove = remove - 1;
         alert(`"${tasks[remove]}" has been removed`);
         tasks.splice(remove, 1);
 
